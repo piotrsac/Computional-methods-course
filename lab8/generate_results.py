@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-K = 8
+K = 1
 M = 1
-X0 = 1.5 * np.pi
-X_END = 3.0 * np.pi
+X0 = 0.5 * np.pi
+X_END = 6.0 * np.pi
 STEPS = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
 
 

@@ -42,16 +42,16 @@ Dla tego równania znane jest rozwiązanie analityczne
 
 W eksperymencie wykorzystano indywidualne parametry
 \begin{equation}
-    k=8, \qquad m=1, \qquad x \in \left[\frac{3}{2}\pi, 3\pi\right].
+    k=1, \qquad m=1, \qquad x \in \left[\frac{1}{2}\pi, 6\pi\right].
 \end{equation}
 
 Warunek początkowy dobrano z rozwiązania dokładnego. Ponieważ
 \begin{equation}
-    y\left(\frac{3}{2}\pi\right)
-    = e^{-8\cos(\frac{3}{2}\pi)} - 8\cos\left(\frac{3}{2}\pi\right) + 1
+    y\left(\frac{1}{2}\pi\right)
+    = e^{-\cos(\frac{1}{2}\pi)} - \cos\left(\frac{1}{2}\pi\right) + 1
     = 2,
 \end{equation}
-przyjęto $x_0=\frac{3}{2}\pi$ oraz $a=2$.
+przyjęto $x_0=\frac{1}{2}\pi$ oraz $a=2$.
 
 Obliczenia wykonano dla kroków
 \begin{equation}
@@ -106,7 +106,7 @@ Dla każdego kroku $h$ porównano wartości numeryczne z rozwiązaniem dokładny
     \label{fig:h1}
 \end{figure}
 
-Dla największego kroku $h=0.1$ metoda Eulera nie odwzorowuje poprawnie końcowego fragmentu rozwiązania. Górny panel pokazuje pełną skalę błędu tej metody, natomiast dolny panel ułatwia ocenę dopasowania w zakresie rozwiązania dokładnego. Metoda Rungego-Kutty czwartego rzędu zachowuje znacznie lepszą zgodność, lecz także wykazuje zauważalny błąd, ponieważ krok jest nadal duży względem szybkości zmian funkcji.
+Dla największego kroku $h=0.1$ metoda Eulera poprawnie odtwarza ogólny, okresowy charakter rozwiązania, ale widoczne są odchylenia amplitudy w pobliżu minimów i maksimów. Górny panel pokazuje pełną skalę porównania, natomiast dolny panel ułatwia ocenę dopasowania w zakresie rozwiązania dokładnego. Metoda Rungego-Kutty czwartego rzędu już dla tego kroku jest bardzo blisko rozwiązania analitycznego.
 
 \begin{figure}[H]
     \centering
@@ -115,7 +115,7 @@ Dla największego kroku $h=0.1$ metoda Eulera nie odwzorowuje poprawnie końcowe
     \label{fig:h2}
 \end{figure}
 
-Po zmniejszeniu kroku do $h=0.01$ metoda Rungego-Kutty praktycznie pokrywa się z rozwiązaniem analitycznym w zbliżeniu dolnego panelu. W przypadku metody Eulera nadal widoczna jest duża kumulacja błędu globalnego. Jest to przykład sytuacji, w której samo dziesięciokrotne zmniejszenie kroku nie gwarantuje jeszcze proporcjonalnego spadku błędu w całym przedziale, ponieważ błąd z wcześniejszych punktów zostaje wzmocniony przez dynamiczny wzrost rozwiązania.
+Po zmniejszeniu kroku do $h=0.01$ metoda Rungego-Kutty praktycznie pokrywa się z rozwiązaniem analitycznym w zbliżeniu dolnego panelu. W przypadku metody Eulera różnice są nadal zauważalne, ale znacznie mniejsze niż dla $h=0.1$. Poprawa jest zgodna z pierwszym rzędem dokładności tej metody.
 
 \begin{figure}[H]
     \centering
@@ -124,7 +124,7 @@ Po zmniejszeniu kroku do $h=0.01$ metoda Rungego-Kutty praktycznie pokrywa się 
     \label{fig:h3}
 \end{figure}
 
-Dla $h=0.001$ jakość metody Eulera wyraźnie się poprawia, choć w pobliżu końca przedziału nadal można zauważyć różnicę względem krzywej dokładnej. Metoda Rungego-Kutty pozostaje wizualnie nierozróżnialna od rozwiązania analitycznego.
+Dla $h=0.001$ jakość metody Eulera wyraźnie się poprawia. Odchylenia względem krzywej dokładnej są już niewielkie i widoczne głównie przy dokładniejszej analizie błędu. Metoda Rungego-Kutty pozostaje wizualnie nierozróżnialna od rozwiązania analitycznego.
 
 \begin{figure}[H]
     \centering
@@ -133,7 +133,7 @@ Dla $h=0.001$ jakość metody Eulera wyraźnie się poprawia, choć w pobliżu k
     \label{fig:h4}
 \end{figure}
 
-Dla kroku $h=0.0001$ rozwiązanie uzyskane metodą Eulera jest już znacznie bliższe rozwiązaniu dokładnemu, ale nadal obserwowany jest błąd rzędu tysięcy jednostek w skali maksymalnej. Wynika to z faktu, że wartości funkcji na końcu przedziału osiągają poziom około $3\cdot 10^3$, a współczynnik przy $y$ w równaniu powoduje wzmacnianie błędu propagowanego z poprzednich iteracji.
+Dla kroku $h=0.0001$ rozwiązanie uzyskane metodą Eulera bardzo dobrze pokrywa się z rozwiązaniem dokładnym w skali wykresu. Błąd maksymalny jest już rzędu $10^{-3}$, co pokazuje, że przy odpowiednio małym kroku nawet prosta metoda pierwszego rzędu może dać akceptowalne przybliżenie dla tego równania.
 
 \begin{figure}[H]
     \centering
@@ -142,7 +142,7 @@ Dla kroku $h=0.0001$ rozwiązanie uzyskane metodą Eulera jest już znacznie bli
     \label{fig:h5}
 \end{figure}
 
-Najmniejszy badany krok $h=0.00001$ daje najlepsze dopasowanie metody Eulera spośród wszystkich przeprowadzonych eksperymentów. Różnica między rozwiązaniem dokładnym a przybliżeniem jest już mała w skali wykresu, natomiast metoda Rungego-Kutty nadal utrzymuje bardzo wysoką dokładność.
+Najmniejszy badany krok $h=0.00001$ daje najlepsze dopasowanie metody Eulera spośród wszystkich przeprowadzonych eksperymentów. Różnica między rozwiązaniem dokładnym a przybliżeniem jest w praktyce niewidoczna na wykresie, natomiast metoda Rungego-Kutty utrzymuje dokładność bliską ograniczeniom arytmetyki zmiennoprzecinkowej.
 
 \newpage
 
@@ -174,17 +174,17 @@ gdzie:
     \label{fig:bledy}
 \end{figure}
 
-Wyniki z Tabeli \ref{tab:bledy} potwierdzają zasadniczą przewagę metody Rungego-Kutty czwartego rzędu nad metodą Eulera. Dla kroku $h=10^{-2}$ błąd RK4 wynosi około $3.09\cdot 10^{-3}$, podczas gdy błąd metody Eulera pozostaje na poziomie $1.87\cdot 10^5$. Oznacza to różnicę wielu rzędów wielkości.
+Wyniki z Tabeli \ref{tab:bledy} potwierdzają zasadniczą przewagę metody Rungego-Kutty czwartego rzędu nad metodą Eulera. Dla kroku $h=10^{-2}$ błąd RK4 wynosi około $1.13\cdot 10^{-10}$, podczas gdy błąd metody Eulera pozostaje na poziomie $1.71\cdot 10^{-1}$. Oznacza to różnicę wielu rzędów wielkości.
 
-Warto zauważyć, że dla metody Eulera błąd przy $h=10^{-2}$ jest większy niż dla $h=10^{-1}$. Nie jest to sprzeczne z teorią zbieżności, ponieważ teoria opisuje zachowanie asymptotyczne dla dostatecznie małych kroków. W badanym równaniu rozwiązanie silnie rośnie pod koniec przedziału, a jawny schemat Eulera przenosi i wzmacnia wcześniejsze odchylenia. Dopiero dla kroków od $10^{-3}$ w dół widoczny jest systematyczny spadek błędu.
+Błąd metody Eulera maleje w przybliżeniu dziesięciokrotnie przy każdorazowym dziesięciokrotnym zmniejszeniu kroku. Jest to zgodne z faktem, że globalny błąd jawnej metody Eulera jest rzędu $O(h)$. Dłuższy przedział całkowania, obejmujący kilka oscylacji rozwiązania, powoduje kumulację błędów lokalnych, ale nie prowadzi do utraty stabilności jakościowej.
 
-Dla metody Rungego-Kutty oczekiwany spadek błędu jest bardzo szybki. Przy najmniejszych krokach różnice między kolejnymi wynikami są już bliskie ograniczeniom arytmetyki zmiennoprzecinkowej i kumulacji błędów zaokrągleń, dlatego błąd nie maleje idealnie monotonicznie.
+Dla metody Rungego-Kutty oczekiwany spadek błędu jest bardzo szybki. Już dla $h=10^{-2}$ błąd jest bliski poziomowi $10^{-10}$, a przy najmniejszych krokach różnice między kolejnymi wynikami są ograniczane głównie przez arytmetykę zmiennoprzecinkową i kumulację błędów zaokrągleń.
 
 \subsection*{5. Wnioski}
 
 \begin{enumerate}
     \item \textbf{Rząd metody ma kluczowe znaczenie.} Metoda Rungego-Kutty czwartego rzędu osiągnęła bardzo wysoką dokładność już dla $h=10^{-2}$, podczas gdy metoda Eulera wymagała znacznie mniejszych kroków, aby wizualnie zbliżyć się do rozwiązania dokładnego.
-    \item \textbf{Metoda Eulera jest wrażliwa na propagację błędu.} W badanym przedziale rozwiązanie gwałtownie rośnie przy $x \rightarrow 3\pi$, przez co błędy lokalne z wcześniejszych kroków są mocno wzmacniane w końcowej części obliczeń.
+    \item \textbf{Metoda Eulera jest wrażliwa na propagację błędu.} W badanym przedziale znajduje się kilka oscylacji rozwiązania, przez co błędy lokalne z wcześniejszych kroków kumulują się w kolejnych punktach siatki.
     \item \textbf{Zmniejszanie kroku poprawia dokładność, ale zwiększa koszt obliczeń.} Dla $h=10^{-5}$ liczba kroków jest bardzo duża, a mimo to metoda Eulera pozostaje mniej dokładna niż RK4 dla znacznie większych kroków.
     \item \textbf{RK4 jest metodą zdecydowanie korzystniejszą praktycznie.} Dla analizowanego równania metoda Rungego-Kutty zapewnia najlepszy kompromis między dokładnością a kosztem obliczeniowym i pozostaje stabilna jakościowo w całym badanym przedziale.
 \end{enumerate}
